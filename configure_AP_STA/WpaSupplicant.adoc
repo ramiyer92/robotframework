@@ -1,0 +1,180 @@
+= WpaSupplicant.py
+:author: Bharath
+:data-uri:
+:fonts:
+
+*Library version:*	1.0 +
+*Library scope:*	global +
+*Named arguments:*	supported +
+
+== Introduction
+
+Robot framework test library for configuring STA using service wpa_supplicant
+
+This library utilizes Python's  https://docs.python.org/2/library/os.path.html[path] class from https://docs.python.org/2/library/os.html[os] module and https://docs.python.org/2/library/xmlrpclib.html[xmlrpclib] module.
+
+The library has following main usages:
+
+* [*] Configuring https://w1.fi/wpa_supplicant/[wpa-supplicant] service in a remote machine.
+* [*] The configuration file is generated as stated https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf[here].
+* [*] The service can be started and stopped as well.
+* [*] New users of the service can do a trial with the help of keyword [Reset Conf]
+
+NOTE: This library is not included in Robot Framework.
+
+=== Table of contents
+
+* <<initial-set-up,Initial Set-up>>
+* <<shortcuts,Shortcuts>>
+* <<keywords,Keywords>>
+
+[[initial-set-up]]
+== Initial Set-up
+
+* Robot Framework will be running in one host.
+* The service will be initiated in a remote machine.
+* The remote machine is the xmlrpc server.
+* The host machine is xmlrpc client.
+* When adding this library with test suites, the xmlrpc server ip and port should be specified.
+* The server should be coded up separately.
+
+[[shortcuts]]
+== Shortcuts
+
+<<ssid,**S**sid>> --
+<<key-mgt,**K**ey-mgt>> --
+<<password,**P**assword>> --
+<<pairwise,**P**airwise>> --
+<<group,**G**roup>> --
+<<wep,**W**ep>> --
+<<auth-alg,**A**uth-alg>> --
+<<wep-default-txid,**W**ep-default-txid>> --
+<<interface,**I**nterface>> --
+<<eap-type,**E**ap-type>> --
+<<eap-phase2,**E**ap-phase2>> --
+<<user-id,**U**ser-id>> --
+<<user-pass,**U**ser-pass>> --
+<<serve-sta,**S**erve-sta>> --
+<<reset,**R**eset>> --
+
+[[keywords]]
+== Keywords
+[%header,cols="2,3,9a"]
+|===
+| Keyword
+| Arguments
+| Documentation
+
+[[ssid]]
+|*Ssid*
+| network_name
+| Used to connect for the given SSID
+
+[[key-mgt]],
+|*Key_Mgt*
+| key
+| Used to specify the type of key management
+
+[cols="2,1,2"]
+!===
+! Key Mgt ! NONE ! #Open Authentication
+! Key Mgt ! WPA-PSK ! #WPA and WPA2
+! Key Mgt ! WPA-EAP ! #Radius server
+!===
+
+[[password]],
+|*Password*
+| key
+| Enter the password for authentication
+
+[[pairwise]],
+| *Pairwise*
+| protocol
+| Specify the type of encryption protocol
+
+[cols="2,1,2"]
+!===
+! Pairwise ! TKIP ! #WPA encryption
+! Pairwise ! CCMP ! #WPA2 encryption
+! Pairwise ! TKIP CCMP ! #WPA and WPA2 encryption
+!===
+
+[[group]],
+| *Group*
+| protocol
+| Specify the type of encryption protocol
+
+[cols="2,1,2"]
+!===
+! Group ! TKIP ! #WPA encryption
+! Group ! CCMP ! #WPA2 encryption
+! Group ! TKIP CCMP ! #WPA and WPA2 encryption
+!===
+
+[[wep]],
+| *Wep*
+| key, key number
+| Used to configure the WEP keys
+
+[cols="2,1,2"]
+!===
+! Wep ! 3CB2AB7CDE, 0  ! #WEP key0
+! Wep ! FDABE42844, 1  ! #WEP key1
+!===
+
+[[auth-alg]],
+| *Auth Alg*
+|
+| For WEP encryption alone
+
+[[wep-default-txid]],
+| *Wep Default Txid*
+| key
+| Used to select the default WEP key
+
+[[interface]],
+| *Iface*
+| Interface
+| Used to select the Interface to run wpa_supplicant
+
+[[eap-type]],
+|*Eap Type*
+| protocol
+| Used to select the type of protocol
+
+[cols="2,1,2"]
+!===
+! Eap Type ! TTLS  ! #Authentication for Radius server
+! Eap Type ! PEAP  ! #Authentication for Radius server
+!===
+
+[[eap-phase2]],
+| *Eap Phase2*
+| enable
+| Used to enable the phase2 authentication
+
+[cols="2,1,2"]
+!===
+! Eap Phase2 ! True  ! #Enable 
+! Eap Phase2 ! False  ! #Disable
+!===
+
+[[user-id]],
+| *User Id*
+| username
+| Used to enter the identity for Radis Server
+
+[[user-pass]],
+| *User Pass*
+| password
+| Used to enter the password for authentication Radius Server
+
+[[serve-sta]],
+| *Serve Sta*
+| start or stop
+| Used to start or stop the Station
+
+[[reset]],
+| *Reset*
+| True or False
+| Used to reset the configuration file of wpa supplicant
