@@ -15,12 +15,22 @@ This library utilizes Python's  https://docs.python.org/2/library/os.path.html[p
 
 The library has following main usages:
 
-* [*] Configuring https://w1.fi/wpa_supplicant/[wpa-supplicant] service in a remote machine.
+* [*] Configuring https://w1.fi/wpa_supplicant/[wpa-supplicant] service in the target board.
 * [*] The configuration file is generated as stated https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf[here].
 * [*] The service can be started and stopped as well.
-* [*] New users of the service can do a trial with the help of keyword [Reset Conf]
+* [*] New users of the service can do a trial with the help of keyword <<reset,Reset>>
+
 
 NOTE: This library is not included in Robot Framework.
+
+
+== Limitations
+
+* The server should be coded separately.
+* The Values to the keyword are case sensitive.
+* The default configuration uses *WPA2-PSK* security, the network name will be +
+*AccessPoint*, the password is *12345678* and the *IEEE802.11g* standard will be used.
+* Also, have a look at the interface being used when using default configuration.
 
 === Table of contents
 
@@ -32,46 +42,49 @@ NOTE: This library is not included in Robot Framework.
 == Initial Set-up
 
 * Robot Framework will be running in one host.
-* The service will be initiated in a remote machine.
-* The remote machine is the xmlrpc server.
+* The service will be initiated in the target board.
+* The target board is the xmlrpc server.
 * The host machine is xmlrpc client.
 * When adding this library with test suites, the xmlrpc server ip and port should be specified.
-* The server should be coded up separately.
+
+|===
+| `*Library*` | `*WpaSupplicant.py*` | `*configuration_file_name*` | `*server_ip*` | `*server_port=80*`
+|===
 
 [[shortcuts]]
 == Shortcuts
 
-<<ssid,**S**sid>> --
+<<ssid,**S**SID>> --
 <<key-mgt,**K**ey-mgt>> --
 <<password,**P**assword>> --
 <<pairwise,**P**airwise>> --
 <<group,**G**roup>> --
 <<wep,**W**ep>> --
-<<auth-alg,**A**uth-alg>> --
+<<auth-alg,**A**uth Alg>> +
 <<wep-default-txid,**W**ep-default-txid>> --
-<<interface,**I**nterface>> --
-<<eap-type,**E**ap-type>> --
-<<eap-phase2,**E**ap-phase2>> --
-<<user-id,**U**ser-id>> --
-<<user-pass,**U**ser-pass>> --
-<<serve-sta,**S**erve-sta>> --
-<<reset,**R**eset>> --
+<<iface,**I**face>> --
+<<eap-type,**E**AP Type>> --
+<<eap-phase2,**E**AP Phase2>> --
+<<user-id,**U**ser ID>> --
+<<user-pass,**U**ser Pass>> +
+<<serve-sta,**S**erve STA>> --
+<<reset,**R**eset>>
 
 [[keywords]]
 == Keywords
-[%header,cols="2,3,9a"]
+[options=header,cols="2,3,9a"]
 |===
 | Keyword
 | Arguments
 | Documentation
 
-[[ssid]]
-|*Ssid*
+|[[ssid]]
+*SSID*
 | network_name
 | Used to connect for the given SSID
 
-[[key-mgt]],
-|*Key_Mgt*
+|[[key-mgt]]
+*Key_Mgt*
 | key
 | Used to specify the type of key management
 
@@ -82,13 +95,13 @@ NOTE: This library is not included in Robot Framework.
 ! Key Mgt ! WPA-EAP ! #Radius server
 !===
 
-[[password]],
-|*Password*
+|[[password]]
+*Password*
 | key
 | Enter the password for authentication
 
-[[pairwise]],
-| *Pairwise*
+|[[pairwise]]
+*Pairwise*
 | protocol
 | Specify the type of encryption protocol
 
@@ -99,8 +112,8 @@ NOTE: This library is not included in Robot Framework.
 ! Pairwise ! TKIP CCMP ! #WPA and WPA2 encryption
 !===
 
-[[group]],
-| *Group*
+|[[group]]
+*Group*
 | protocol
 | Specify the type of encryption protocol
 
@@ -111,8 +124,8 @@ NOTE: This library is not included in Robot Framework.
 ! Group ! TKIP CCMP ! #WPA and WPA2 encryption
 !===
 
-[[wep]],
-| *Wep*
+|[[wep]]
+*Wep*
 | key, key number
 | Used to configure the WEP keys
 
@@ -122,23 +135,23 @@ NOTE: This library is not included in Robot Framework.
 ! Wep ! FDABE42844, 1  ! #WEP key1
 !===
 
-[[auth-alg]],
-| *Auth Alg*
+|[[auth-alg]]
+*Auth Alg*
 |
 | For WEP encryption alone
 
-[[wep-default-txid]],
-| *Wep Default Txid*
+|[[wep-default-txid]]
+*Wep Default Txid*
 | key
 | Used to select the default WEP key
 
-[[interface]],
-| *Iface*
+|[[interface]]
+*Iface*
 | Interface
 | Used to select the Interface to run wpa_supplicant
 
-[[eap-type]],
-|*Eap Type*
+|[[eap-type]]
+*EAP Type*
 | protocol
 | Used to select the type of protocol
 
@@ -148,8 +161,8 @@ NOTE: This library is not included in Robot Framework.
 ! Eap Type ! PEAP  ! #Authentication for Radius server
 !===
 
-[[eap-phase2]],
-| *Eap Phase2*
+|[[eap-phase2]]
+*EAP Phase2*
 | enable
 | Used to enable the phase2 authentication
 
@@ -159,22 +172,22 @@ NOTE: This library is not included in Robot Framework.
 ! Eap Phase2 ! False  ! #Disable
 !===
 
-[[user-id]],
-| *User Id*
+|[[user-id]]
+*User ID*
 | username
 | Used to enter the identity for Radis Server
 
-[[user-pass]],
-| *User Pass*
+|[[user-pass]]
+*User Pass*
 | password
 | Used to enter the password for authentication Radius Server
 
-[[serve-sta]],
-| *Serve Sta*
+|[[serve-sta]]
+*Serve STA*
 | start or stop
 | Used to start or stop the Station
 
-[[reset]],
-| *Reset*
+|[[reset]]
+*Reset*
 | True or False
 | Used to reset the configuration file of wpa supplicant

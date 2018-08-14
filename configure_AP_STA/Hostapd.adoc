@@ -16,7 +16,7 @@ This library utilizes Python's  https://docs.python.org/2/library/os.path.html[p
 
 The library has following main usages:
 
-* [*] Configuring http://w1.fi/hostapd/[hostapd] service in a remote machine.
+* [*] Configuring http://w1.fi/hostapd/[hostapd] service in the target board.
 * [*] The configuration file is generated as stated https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf[here].
 * [*] The service can be started and stopped as well.
 * [*] New users of the service can do a trial with the help of keyword <<reset-conf,Reset Conf>>
@@ -60,7 +60,7 @@ verify_connection()
 [[shortcuts]]
 == Shortcuts
 
-<<ap-ssid,**A**p Ssid>> --
+<<ap-ssid,**A**p SSID>> --
 <<auth-algs,**A**uth Algs>> --
 <<auth-server,**A**uth Server>> --
 <<auth-server-secret,**A**uth Server Secret>> --
@@ -69,12 +69,12 @@ verify_connection()
 <<channel,**C**hannel>> +
 <<country-code,**C**ountry Code>> --
 <<driver,**D**river>> --
-<<eap-msg, **E**ap Msg>> --
+<<eap-msg, **E**AP Msg>> --
 <<interface,**I**nterface>> --
 <<is-connected,**I**s Connected>> --
 <<mode,**M**ode>> --
 <<reset-conf,**R**eset Conf>> +
-<<rsn-pairwise,**R**sn Pairwise>> --
+<<rsn-pairwise,**R**SN Pairwise>> --
 <<serve-ap,**S**erve Ap>> --
 <<supported-rates,**S**upported Rates>> --
 <<wep-default-key,**W**ep-Default-Key>> --
@@ -92,7 +92,7 @@ verify_connection()
 | Documentation
 
 |[[ap-ssid]]
-*Ap Ssid*
+*Ap SSID*
 | nw_name
 | Used to provide ssid for the AP.
 
