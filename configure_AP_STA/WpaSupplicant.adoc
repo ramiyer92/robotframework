@@ -48,7 +48,7 @@ NOTE: This library is not included in Robot Framework.
 * When adding this library with test suites, the xmlrpc server ip and port should be specified.
 
 |===
-| `*Library*` | `*WpaSupplicant.py*` | `*configuration_file_name*` | `*server_ip*` | `*server_port=80*`
+| [big]*Library* | [big]*WpaSupplicant.py* | [big]*configuration_file_name* | [big]*server_ip*` | [big]*server_port=80*
 |===
 
 [[shortcuts]]
@@ -147,7 +147,7 @@ NOTE: This library is not included in Robot Framework.
 
 |[[interface]]
 *Iface*
-| Interface
+| interface
 | Used to select the Interface to run wpa_supplicant
 
 |[[eap-type]]
@@ -157,8 +157,8 @@ NOTE: This library is not included in Robot Framework.
 
 [cols="2,1,2"]
 !===
-! Eap Type ! TTLS  ! #Authentication for Radius server
-! Eap Type ! PEAP  ! #Authentication for Radius server
+! EAP Type ! TTLS  ! #Authentication for Radius server
+! EAP Type ! PEAP  ! #Authentication for Radius server
 !===
 
 |[[eap-phase2]]
@@ -168,8 +168,8 @@ NOTE: This library is not included in Robot Framework.
 
 [cols="2,1,2"]
 !===
-! Eap Phase2 ! True  ! #Enable 
-! Eap Phase2 ! False  ! #Disable
+! EAP Phase2 ! True  ! #Enable 
+! EAP Phase2 ! False  ! #Disable
 !===
 
 |[[user-id]]
