@@ -1,6 +1,7 @@
 = Hostapd.py
 :author: Ragacibi
 :data-uri:
+:icons: font
 :fonts:
 :link-css:font-awesome.min.css
 

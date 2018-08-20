@@ -1,6 +1,7 @@
 = WpaSupplicant.py
 :author: Bharath
 :data-uri:
+:icons: font
 :fonts:
 
 *Library version:*	1.0 +
