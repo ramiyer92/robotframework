@@ -102,8 +102,13 @@ def verify_connection():
     res = check_output('iw dev '+ interface + ' station dump | grep Station | cut -f2 -d" "', shell=True)
     return res.split()
 
+def run_cmd(cmd):
+    res = check_output(cmd, shell=True)
+    return res
+
 SERVER = SimpleXMLRPCServer(('0.0.0.0', 80))
 print "Listening on port 80..."
 SERVER.register_function(remote, "board")
 SERVER.register_function(verify_connection, "verify_connection")
+SERVER.register_function(run_cmd, "run_cmd")
 SERVER.serve_forever()

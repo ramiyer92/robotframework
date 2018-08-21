@@ -1,0 +1,174 @@
+** Settings **
+Library  Hostapd.py  ap.conf  192.168.1.20
+Library  WpaSupplicant.py  station.conf  192.168.1.30
+
+** Keywords **
+
+Station Configuration
+       [Tags]  STA
+       Reset  True
+       SSID  Bond
+       Key_Mgt  WPA-PSK
+       Password  Bond1234
+       Iface  wlan0
+       Serve STA  start
+       Sleep  1m
+       Is Connected  14:cc:20:1a:0a:4a
+       ${output}  Run Command  iw reg get
+       Log  ${output}  level=WARN
+       Serve AP  stop
+       Serve STA  stop
+
+
+** Test Cases **
+
+Verify configuration of AP
+       [Documentation]  AP will start now
+       [Tags]  AP
+       Interface  wlan2
+       Driver  nl80211
+       Ap SSID  Bond
+       Channel  6
+       Mode  n
+       Auth Algs  3
+       WEP Key  3
+       Wpa Key mgmt  WPA2-PSK
+       Wpa Pairwise  TKIP CCMP
+       Wpa Passphrase  Bond1234
+
+Verify the country Austria is assigned
+       [Documentation]  Country Code will be assigned as Austria
+       [Tags]  Austria
+       Country Code  AT
+       Serve AP  start
+       Sleep  3s
+       Station Configuration
+
+Verify the country Australia is assigned
+       [Documentation]  Country Code will be assigned as Australia
+       [Tags]  Australia
+       Country Code  AU
+       Serve AP  start
+       Sleep  3s
+       Station Configuration
+
+Verify the country Belgium is assigned
+       [Documentation]  Country Code will be assigned as Belgium
+       [Tags]  Belgium
+       Country Code  BE
+       Serve AP  start
+       Sleep  3s
+       Station Configuration
+
+Verify the country Brazil is assigned
+       [Documentation]  Country Code will be assigned as Brazil
+       [Tags]  Brazil
+       Country Code  BR
+       Serve AP  start
+       Sleep  3s
+       Station Configuration
+
+Verify the country Canada is assigned
+       [Documentation]  Country Code will be assigned as Canada
+       [Tags]  Canada
+       Country Code  CH
+       Serve AP  start
+       Sleep  3s
+       Station Configuration
+      
+Verify the country China is assigned
+       [Documentation]  Country code will be assigned as China
+       [Tags]  China
+       Country Code  CN
+       Serve AP  start
+       Sleep  3s
+       Station Configuration
+
+Verify the country Denmark is assigned
+       [Documentation]  Country Code will be assigned as Denmark
+       [Tags]  Denmark
+       Country Code  DK
+       Serve AP  start
+       Sleep  3s
+       Station Configuration
+
+Verify the country Germany is assigned
+       [Documentation]  Country Code will be assigned as Germany
+       [Tags]  Germany
+       Country Code  DE
+       Serve AP  start
+       Sleep  3s
+       Station Configuration
+       
+Verify the country France is assigned
+       [Documentation]  Country Code will be assigned as France
+       [Tags]  France
+       Country Code  FR
+       Serve AP  start
+       Sleep  3s
+       Station Configuration
+       
+Verify the country United Kingdom is assigned
+       [Documentation]  Country Code will be assigned as UK
+       [Tags]  UK
+       Country Code  GB
+       Serve AP  start
+       Sleep  3s
+       Station Configuration
+       
+Verify the country Ireland is assigned
+       [Documentation]  Country Code will be assigned as Ireland
+       [Tags]  Ireland
+       Country Code  IE
+       Serve AP  start
+       Sleep  3s
+       Station Configuration
+
+Verify the country Japan is assigned
+       [Documentation]  Country Code will be assigned as Japan
+       [Tags]  Japan
+       Country Code  JP
+       Serve AP  start
+       Sleep  3s
+       Station Configuration
+
+Verify the country Portugal is assigned
+       [Documentation]  Country Code will be assigned as Portugal
+       [Tags]  Portugal
+       Country Code  PT
+       Serve AP  start
+       Sleep  3s
+       Station Configuration
+
+Verify the country spain is assigned
+       [Documentation]  Country Code will be assigned as Spain
+       [Tags]  Spain
+       Country Code  ES
+       Serve AP  start
+       Sleep  3s
+       Station Configuration
+
+Verify the country United states is assigned
+       [Documentation]  Country Code will be assigned as US
+       [Tags]  US
+       Country Code  US
+       Serve AP  start
+       Sleep  3s
+       Station Configuration
+       
+
+# Verify the station configuration
+#        [Tags]  STA
+#        Reset  True
+#        SSID  Bond
+#        Key_Mgt  WPA-PSK
+#        Password  Bond1234
+#        Iface  wlan0
+#        Serve STA  start
+#        Sleep  1m
+#        Is Connected  14:cc:20:1a:0a:4a
+#        ${output}  Run Command  iw reg get
+#        Log  ${output}  level=WARN
+#        Serve AP  stop
+#        Serve STA  stop
+

@@ -350,6 +350,12 @@ class Hostapd(ConfFile):
         else:
             raise Exception("Station is not connected")
 
+    def run_command(self, cmd):
+        """Used to run the command in remote
+        machine and returns the result
+        """
+        return self.proxy.run_cmd(cmd)
+
     def reset_conf(self, default=False):
         """Used to reset the AP configuration to None
         or generate a default AP configuration for new users.
